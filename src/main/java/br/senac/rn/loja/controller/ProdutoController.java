@@ -38,10 +38,8 @@ public class ProdutoController {
 	public String cadastrar(Model model) {
 		Produto produto = new Produto();
 		model.addAttribute("produto", produto);
-		
 		List<Marca> marcas = marcaService.obterTodos();
 		model.addAttribute("marcas", marcas);
-		
 		List<Departamento> departamentos = departamentoService.buscarTodos();
 		model.addAttribute("departamentos", departamentos);
 		
@@ -53,5 +51,4 @@ public class ProdutoController {
 		service.salvar(produto);
 		return "produto/lista";
 	}
-
 }
