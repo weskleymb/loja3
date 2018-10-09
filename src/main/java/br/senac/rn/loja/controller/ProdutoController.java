@@ -39,16 +39,16 @@ public class ProdutoController {
 		Produto produto = new Produto();
 		model.addAttribute("produto", produto);
 		List<Marca> marcas = marcaService.obterTodos();
-		List<Departamento> departamentos = departamentoService.buscarTodos();
 		model.addAttribute("marcas", marcas);
+		List<Departamento> departamentos = departamentoService.buscarTodos();
 		model.addAttribute("departamentos", departamentos);
 		return "produto/form";
 	}
-	
 	
 	@PostMapping
 	public String salvar(Produto produto) {
 		service.salvar(produto);
 		return "produto/lista";
 	}
+
 }
