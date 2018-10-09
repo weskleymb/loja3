@@ -48,7 +48,7 @@ public class ProdutoController {
 	@PostMapping
 	public String salvar(Produto produto) {
 		service.salvar(produto);
-		return"produto/lista";
+		return"redirect:/produto";
 	}
 	
 }
