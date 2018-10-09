@@ -25,4 +25,8 @@ public class ProdutoController {
 		return "produto/lista";
 	}
 	
+	@GetMapping("cadastrar")
+	public String cadastrar() {
+		return "produto/cadastrar";
+	}
 }
