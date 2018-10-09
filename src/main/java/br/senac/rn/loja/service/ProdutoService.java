@@ -20,5 +20,10 @@ public class ProdutoService {
 	public List<Produto> obterTodos() {
 		return repository.findAll();
 	}
+
+	public void salvar(Produto produto) {
+		repository.save(produto);
+		
+	}
 	
 }
