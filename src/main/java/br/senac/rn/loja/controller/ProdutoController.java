@@ -8,7 +8,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import br.senac.rn.loja.model.Departamento;
+import br.senac.rn.loja.model.Marca;
 import br.senac.rn.loja.model.Produto;
+import br.senac.rn.loja.service.DepartamentoService;
+import br.senac.rn.loja.service.MarcaService;
 import br.senac.rn.loja.service.ProdutoService;
 
 @Controller
@@ -17,6 +21,10 @@ public class ProdutoController {
 
 	@Autowired
 	private ProdutoService service;
+	@Autowired
+	private MarcaService marcaService;
+	@Autowired
+	private DepartamentoService departamentoService;
 	
 	@GetMapping
 	public String lista(Model model) {
@@ -25,8 +33,12 @@ public class ProdutoController {
 		return "produto/lista";
 	}
 	
-	@GetMapping("cadastrar")
-	public String cadastrar() {
-		return "produto/cadastrar";
+	public String cadastrar(Model model) {
+		List<Marca> marcas = marcaService.obterTodos();
+		List<Departamento> departamentos = departamentoService.buscarTodos();
+		model.addAttribute("marcas", marcas);
+		model.addAttribute("departamentos", departamentos);
+		return "produto/form";
 	}
+	
 }

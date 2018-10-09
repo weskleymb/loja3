@@ -22,13 +22,19 @@
                     <div class="form-group">
                         <label for="marca">Marca</label>
                         <select id="marca" class="form-control">
-                            <option th:each="marca : ${marcas}" th:value="${marca.id}" th:text="${marca.nome}"></option>
+                            <option th:each="marca : ${marcas}" 
+                                    th:value="${marca.id}" 
+                                    th:text="${marca.nome}">
+                            </option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="departamento">Departamento</label>
-                        <select name="departamento" id="departamento" class="form-control">
-                            <option value="#">departamento</option>
+                        <select id="departamento" class="form-control">
+                            <option th:each="departamento : ${departamentos}"
+                                    th:value="${departamento.id}"
+                                    th:text="${departamento.nome}">
+                            </option>
                         </select>
                     </div>
                     <div class="form-group">
