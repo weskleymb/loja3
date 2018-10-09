@@ -28,8 +28,8 @@ public class ProdutoService {
 	}
 
 	public void salvar(Produto produto) {
-		departamentoRepository.save(produto.getDepartamento());
-		marcaRepository.save(produto.getMarca());
+//		departamentoRepository.save(produto.getDepartamento());
+//		marcaRepository.save(produto.getMarca());
 		repository.save(produto);
 	}
 	
