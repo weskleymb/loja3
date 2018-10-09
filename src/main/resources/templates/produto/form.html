@@ -12,26 +12,26 @@
     <div class="container">
         <fieldset>
             <legend>Formulário de Produtos</legend>
-            <form>
+            <form th:action="@{/produto}" th:object="*{produto}" method="post" > 
                 <div class="form-group">
                     <label for="nome">Nome</label>
-                    <input class="form-control" type="text" id="nome">
+                    <input class="form-control" type="text" id="nome" th:value="*{nome}">
                 </div>
                 <div class="form-group">
                     <label for="marca">Marca</label>
-                    <select class="form-control" id="marca">
-                        <option value="#">marca</option>
+                    <select class="form-control" id="marca" th:fild="*{marca}"  th:value="*{marca}">
+                        <option th:each="marca : ${marcas}" th:value="${marca.id}" th:text="${marca.nome}"></option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="departamento">Departamento</label>
-                    <select class="form-control" id="departamento">
-                        <option value="#">departamento</option>
+                    <select class="form-control" id="departamento" th:field="*{departamento}" th:value="*{departamento}">
+                        <option th:each="departamento : ${departamentos}" th:value="${departamento.id}" th:text="${departamento.nome}"></option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="valor">Valor</label>
-                    <input class="form-control" type="text" id="valor">
+                    <input class="form-control" type="text" id="valor"  th:fild="*{valor}"  th:value="*{valor}"  >
                 </div>
                 <button class="btn btn-primary" type="submit">
                     Salvar
