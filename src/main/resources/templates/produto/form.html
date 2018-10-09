@@ -9,19 +9,19 @@
         <link rel="stylesheet" th:href="@{/css/fontawesome.css}">
     </head>
     <body>
-        <div class="container" id="form-marcas">
+        <div class="container">
             <fieldset>
                 <legend>
                     Formulário de Produtos
                 </legend>
-                <form >
+                <form th:action="@{/produto}" th:object="*{produto}" method="post">
                     <div class="form-group">
                         <label for="nome">Nome</label>
-                        <input type="text" id="nome" class="form-control">
+                        <input type="text" id="nome" class="form-control" th:value="*{nome}" th:field="*{nome}">
                     </div>
                     <div class="form-group">
                         <label for="marca">Marca</label>
-                        <select id="marca" class="form-control">
+                        <select id="marca" class="form-control" th:field="*{marca}" th:value="*{marca}">
                             <option th:each="marca : ${marcas}" 
                                     th:value="${marca.id}" 
                                     th:text="${marca.nome}">
@@ -30,7 +30,7 @@
                     </div>
                     <div class="form-group">
                         <label for="departamento">Departamento</label>
-                        <select id="departamento" class="form-control">
+                        <select id="departamento" class="form-control" th:field="*{departamento}" th:value="*{departamento}">
                             <option th:each="departamento : ${departamentos}"
                                     th:value="${departamento.id}"
                                     th:text="${departamento.nome}">
@@ -39,7 +39,7 @@
                     </div>
                     <div class="form-group">
                         <label for="valor">Valor</label>
-                        <input type="text" id="valor" class="form-control">
+                        <input type="text" id="valor" class="form-control" th:value="*{valor}" th:field="*{valor}">
                     </div>
                     <div class="col-md-6">
                         <button type="submit" class="btn btn-primary btn-block">
