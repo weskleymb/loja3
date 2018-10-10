@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.senac.rn.loja.model.Produto;
-import br.senac.rn.loja.repository.DepartamentoRepository;
-import br.senac.rn.loja.repository.MarcaRepository;
 import br.senac.rn.loja.repository.ProdutoRepository;
 
 @Service
@@ -19,18 +17,8 @@ public class ProdutoService {
 	@Autowired
 	private ProdutoRepository repository;
 	
-	@Autowired
-	private DepartamentoRepository departamentoRepository;
-	@Autowired 
-	private MarcaRepository marcaRepository;
-	
 	public List<Produto> obterTodos() {
 		return repository.findAll();
-	}
-
-	public void salvar(Produto produto) {
-		repository.save(produto);
-		
 	}
 	
 }
