@@ -18,7 +18,7 @@ public class MarcaService {
 		repository.save(marca);
 	}
 	
-	public List<Marca> obterTodos() {
+	public List<Marca> buscarTodos() {
 		return repository.findAll();
 	}
 	

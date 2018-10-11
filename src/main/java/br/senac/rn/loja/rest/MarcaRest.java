@@ -19,7 +19,7 @@ public class MarcaRest {
 	
 	@GetMapping("obter")
 	public List<Marca> buscar() {
-		return service.obterTodos();
+		return service.buscarTodos();
 	}
 	
 }

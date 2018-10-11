@@ -33,4 +33,11 @@ public class ProdutoService {
 		repository.save(produto);
 	}
 	
+	public Produto buscarPorId(Integer id) {
+		return repository.findById(id).get();
+	}
+	
+	public void remover(Integer id) {
+		repository.deleteById(id);
+	}
 }
