@@ -1,0 +1,48 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Nova Cidade</title>
+        <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+        <link rel="stylesheet" th:href="@{/css/bootstrap-theme.css}">
+        <link rel="stylesheet" th:href="@{/css/fontawesome.css}">
+    </head>
+    <body>
+        <div class="container" id="form-cidades">
+            <fieldset>
+                <legend>
+                    Dados da Cidade
+                </legend>
+                <form th:action="@{/cidade}" th:object="${cidade}" method="post">
+                    <input type="hidden" id="id" name="id" th:value="*{id}" th:field="*{id}">
+                    <div class="form-group">
+                        <label for="nome">UF</label>
+                        <input type="text" name="uf" id="uf" class="form-control" th:value="*{uf}" th:field="*{uf}" placeholder="UF da cidade..." autofocus>
+                    </div>
+                    <div class="form-group">
+                        <label for="nome">Cidade</label>
+                        <select class="form-control" id="nome">
+                            <option value="#">cidade</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-primary btn-block">
+                                <i class="far fa-save"></i> Salvar
+                            </button>
+                        </div>
+                        <div class="col-md-6">
+                            <a class="btn btn-danger btn-block" th:href="@{/cidade}">
+                                <i class="fas fa-undo-alt"></i> Voltar
+                            </a>
+                        </div>
+                    </div>
+                </form>
+            </fieldset>
+        </div>
+        <script th:src="@{/js/jquery.js}"></script>
+        <script th:src="@{/js/bootstrap.js}"></script>
+        <script th:src="@{/js/fontawesome.js}"></script>
+    </body>
+</html>
