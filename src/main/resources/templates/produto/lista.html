@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Lista de Produtos</title>
     <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
     <link rel="stylesheet" th:href="@{/css/bootstrap-theme.css}">
@@ -26,8 +27,8 @@
                     <tr th:each="produto : ${produtos}">
                         <td th:text="${produto.id}"></td>
                         <td th:text="${produto.nome}"></td>
-                        <td th:text="${produto.marca.nome}"></td>
-                        <td th:text="${produto.departamento.nome}"></td>
+                        <td th:text="${produto.marca}"></td>
+                        <td th:text="${produto.departamento}"></td>
                         <td th:text="${produto.valor}"></td>
                     </tr>
                 </tbody>
