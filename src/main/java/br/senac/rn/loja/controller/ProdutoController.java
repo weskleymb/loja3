@@ -21,9 +21,9 @@ public class ProdutoController {
 	@Autowired
 	private ProdutoService service;
 	@Autowired
-	private MarcaService marcaservice;
+	private MarcaService marcaService;
 	@Autowired
-	private DepartamentoService departamentoservice;
+	private DepartamentoService departamentoService;
 	
 	@GetMapping
 	public String lista(Model model) {
@@ -31,21 +31,23 @@ public class ProdutoController {
 		model.addAttribute("produtos", produtos);
 		return "produto/lista";
 	}
+	
 	@GetMapping("cadastrar")
-	public String cadastar(Model model) {
+	public String cadastrar(Model model) {
 		Produto produto = new Produto();
 		model.addAttribute("produto", produto);
-		List<Marca> marcas = marcaservice.obterTodos();
+		List<Marca> marcas = marcaService.obterTodos();
 		model.addAttribute("marcas", marcas);
-		List<Departamento> departamentos = departamentoservice.buscarTodos();
+		List<Departamento> departamentos = departamentoService.buscarTodos();
 		model.addAttribute("departamentos", departamentos);
 		return "produto/form";
 	}
-
+	
 	@PostMapping
 	public String salvar(Produto produto) {
 		service.salvar(produto);
-		return "";
+		return "redirect:/produto";
 	}
+	
 }
 

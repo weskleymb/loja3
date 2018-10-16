@@ -1,12 +1,9 @@
 package br.senac.rn.loja.service;
 
 import java.util.List;
-
 import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import br.senac.rn.loja.model.Produto;
 import br.senac.rn.loja.repository.ProdutoRepository;
 
@@ -22,8 +19,7 @@ public class ProdutoService {
 	}
 
 	public void salvar(Produto produto) {
-		// TODO Auto-generated method stub
-		
+		repository.save(produto);
 	}
 	
 }
