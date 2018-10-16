@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.senac.rn.loja.model.Departamento;
@@ -36,19 +35,11 @@ public class ProdutoController {
 	
 	@GetMapping("cadastrar")
 	public String cadastrar(Model model) {
-		Produto produto = new Produto();
-		model.addAttribute("produto", produto);
 		List<Marca> marcas = marcaService.obterTodos();
-		model.addAttribute("marcas", marcas);
 		List<Departamento> departamentos = departamentoService.buscarTodos();
+		model.addAttribute("marcas", marcas);
 		model.addAttribute("departamentos", departamentos);
-		
 		return "produto/form";
 	}
 	
-	@PostMapping
-	public String salvar(Produto produto) {
-		service.salvar(produto);
-		return "redirect:/produto";
-	}
 }
