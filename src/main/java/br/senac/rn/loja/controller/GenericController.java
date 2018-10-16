@@ -15,6 +15,7 @@ public abstract class GenericController<T> {
 	protected final String URL_CADASTRAR = "cadastrar";
 	protected final String URL_EDITAR = "editar/{id}";
 	
+	
 	@Autowired
 	private GenericService<T> service;
 	
@@ -23,8 +24,7 @@ public abstract class GenericController<T> {
 	@GetMapping
 	public String listar(Model model) {
 		model.addAttribute(getNomeEntidadeLista(), service.obterTodos());
-		System.out.println(service.obterTodos());
-		return getPath() + PAGINA_LISTA;
+		return getPath() + PAGINA_CADASTRAR;
 	}
 	
 	@GetMapping(URL_CADASTRAR)
@@ -37,14 +37,15 @@ public abstract class GenericController<T> {
 		return null;
 	}
 	
+	private String getNomeEntidade() {
+		return StringUtils.uncapitalize(getClassType().getSimpleName());
+	}
+	
 	protected String getPath() {
 		StringBuilder builder = new StringBuilder(getNomeEntidade());
 		return builder.append("/").toString();
 	}
 	
-	private String getNomeEntidade() {
-		return StringUtils.uncapitalize(getClassType().getSimpleName());
-	}
 	
 	private String getNomeEntidadeLista() {
 		StringBuilder builder = new StringBuilder(getNomeEntidade());
