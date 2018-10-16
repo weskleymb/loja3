@@ -39,8 +39,8 @@ public class ProdutoController {
 		Produto produto = new Produto();
 		model.addAttribute("produto", produto);
 		List<Marca> marcas = marcaService.obterTodos();
-		List<Departamento> departamentos = departamentoService.buscarTodos();
 		model.addAttribute("marcas", marcas);
+		List<Departamento> departamentos = departamentoService.buscarTodos();
 		model.addAttribute("departamentos", departamentos);
 		return "produto/form";
 	}
@@ -48,8 +48,7 @@ public class ProdutoController {
 	@PostMapping
 	public String salvar(Produto produto) {
 		service.salvar(produto);
-		return"redirect:/produto";
+		return "redirect:/produto";
 	}
-	
-	
+
 }

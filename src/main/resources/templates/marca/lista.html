@@ -25,11 +25,15 @@
                     </thead>
                     <tbody>
                         <tr th:each="marca : ${marcas}">
-                            <td><span th:text="${marca.id}"></span></td>
+                            <td style="width: 5%;"><span th:text="${marca.id}"></span></td>
                             <td><span th:text="${marca.nome}"></span></td>
-                            <td>
-                                <a class="btn btn-primary" th:href="@{/marca/editar/{id}(id=${marca.id})}"><i class="far fa-edit"></i></a>
-                                <a class="btn btn-danger" th:href="@{/marca/remover/{id}(id=${marca.id})}"><i class="far fa-trash-alt"></i></a>
+                            <td style="width: 15%;">
+                                <div class="col-md-6">
+                                    <a class="btn btn-primary btn-block" th:href="@{/marca/editar/{id}(id=${marca.id})}"><i class="far fa-edit"></i></a>
+                                </div>
+                                <div class="col-md-6">
+                                    <a class="btn btn-danger btn-block" th:href="@{/marca/remover/{id}(id=${marca.id})}"><i class="far fa-trash-alt"></i></a>
+                                </div>
                             </td>
                         </tr>
                     </tbody>
