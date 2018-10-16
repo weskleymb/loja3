@@ -52,7 +52,6 @@ public abstract class GenericController<T> {
 	private String getNomeEntidade() {
 		return StringUtils.uncapitalize(getClassType().getSimpleName());
 	}
-
 	protected String getPath() {
 		StringBuilder builder = new StringBuilder(getNomeEntidade());
 		return builder.append("/").toString();
