@@ -33,19 +33,19 @@ public class Cliente {
 	}
 	
 	public String getNome() {
-		return nome;
+		return nome.toUpperCase().trim();
 	}
 	
 	public void setNome(String nome) {
-		this.nome = nome.toUpperCase();
+		this.nome = nome.toUpperCase().trim();
 	}
 	
 	public String getCpf() {
-		return cpf;
+		return cpf.trim();
 	}
 	
 	public void setCpf(String cpf) {
-		this.cpf = cpf;
+		this.cpf = cpf.trim();
 	}
 	
 	public Calendar getNascimento() {

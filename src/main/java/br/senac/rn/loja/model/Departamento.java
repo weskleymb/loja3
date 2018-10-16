@@ -27,19 +27,19 @@ public class Departamento implements Comparable<Departamento> {
 	}
 	
 	public String getNome() {
-		return nome;
+		return nome.toUpperCase().trim();
 	}
 	
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.nome = nome.toUpperCase().trim();
 	}
 	
 	public String getSigla() {
-		return sigla;
+		return sigla.toUpperCase().trim();
 	}
 	
 	public void setSigla(String sigla) {
-		this.sigla = sigla;
+		this.sigla = sigla.toUpperCase().trim();
 	}
 	
 	public Float getDesconto() {
@@ -51,11 +51,11 @@ public class Departamento implements Comparable<Departamento> {
 	}
 	
 	public String getFone() {
-		return fone;
+		return fone.trim();
 	}
 
 	public void setFone(String fone) {
-		this.fone = fone;
+		this.fone = fone.trim();
 	}
 
 	@Override
