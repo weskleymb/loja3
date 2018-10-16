@@ -1,7 +1,5 @@
 package br.senac.rn.loja.controller;
 
-import java.lang.reflect.ParameterizedType;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -11,18 +9,22 @@ import br.senac.rn.loja.service.GenericService;
 
 public abstract class GenericController<T> {
 
-	protected final String URL_LISTAR = "lista";
+	protected final String PAGINA_LISTA = "lista";
+	protected final String PAGINA_CADASTRAR = "form";
+	
 	protected final String URL_CADASTRAR = "cadastrar";
 	protected final String URL_EDITAR = "editar/{id}";
 	
 	@Autowired
 	private GenericService<T> service;
 	
+	public abstract Class<T> getClassType();
+
 	@GetMapping
 	public String listar(Model model) {
 		model.addAttribute(getNomeEntidadeLista(), service.obterTodos());
 		System.out.println(service.obterTodos());
-		return getPath() + URL_LISTAR;
+		return getPath() + PAGINA_LISTA;
 	}
 	
 	@GetMapping(URL_CADASTRAR)
@@ -36,19 +38,15 @@ public abstract class GenericController<T> {
 	}
 	
 	protected String getPath() {
-		return getNomeEntidade();
+		StringBuilder builder = new StringBuilder(getNomeEntidade());
+		return builder.append("/").toString();
 	}
 	
-	@SuppressWarnings("unchecked")
-	protected Class<T> inferirTipo() {
-		return (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+	private String getNomeEntidade() {
+		return StringUtils.uncapitalize(getClassType().getSimpleName());
 	}
 	
-	protected String getNomeEntidade() {
-		return StringUtils.uncapitalize(inferirTipo().getSimpleName());
-	}
-	
-	protected String getNomeEntidadeLista() {
+	private String getNomeEntidadeLista() {
 		StringBuilder builder = new StringBuilder(getNomeEntidade());
 		return builder.append("s").toString();
 	}
