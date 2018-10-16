@@ -1,15 +1,24 @@
 package br.senac.rn.loja.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import br.senac.rn.loja.model.Marca;
+import br.senac.rn.loja.service.MarcaService;
 
 @Controller
 @RequestMapping("marca")
 public class MarcaController extends GenericController<Marca> {
 
-<<<<<<< HEAD
 	@Autowired
 	private MarcaService service;
 	
@@ -45,11 +54,10 @@ public class MarcaController extends GenericController<Marca> {
 		service.salvar(marca);
 		ModelAndView mav = new ModelAndView(new RedirectView("/marca", true));
 		return mav;
-=======
+	}	
 	@Override
 	public Class<Marca> getClassType() {
 		return Marca.class;
->>>>>>> 140f8d4281d9b7280dc0180297bd36716b4d78b6
 	}
 	
 }

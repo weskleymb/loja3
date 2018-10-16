@@ -1,14 +1,17 @@
 package br.senac.rn.loja.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.senac.rn.loja.model.Marca;
+import br.senac.rn.loja.repository.MarcaRepository;
 
 @Service
 @Transactional
-<<<<<<< HEAD
 public class MarcaService {
 
 	@Autowired
@@ -31,6 +34,3 @@ public class MarcaService {
 	}
 	
 }
-=======
-public class MarcaService extends GenericService<Marca> {}
->>>>>>> 140f8d4281d9b7280dc0180297bd36716b4d78b6
