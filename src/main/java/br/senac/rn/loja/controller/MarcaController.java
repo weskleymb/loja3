@@ -7,7 +7,4 @@ import br.senac.rn.loja.model.Marca;
 
 @Controller
 @RequestMapping("marca")
-public class MarcaController extends GenericController<Marca> {
-
-	
-}
+public class MarcaController extends GenericController<Marca> {}
