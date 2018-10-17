@@ -33,7 +33,7 @@ public class Cliente {
 	}
 	
 	public String getNome() {
-		return nome.toUpperCase().trim();
+		return nome;
 	}
 	
 	public void setNome(String nome) {
@@ -41,7 +41,7 @@ public class Cliente {
 	}
 	
 	public String getCpf() {
-		return cpf.trim();
+		return cpf;
 	}
 	
 	public void setCpf(String cpf) {

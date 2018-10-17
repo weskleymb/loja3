@@ -12,7 +12,7 @@ import br.senac.rn.loja.repository.MarcaRepository;
 
 @Service
 @Transactional
-public class MarcaService {
+public class MarcaService extends GenericService<Marca>{
 
 	@Autowired
 	private MarcaRepository repository;

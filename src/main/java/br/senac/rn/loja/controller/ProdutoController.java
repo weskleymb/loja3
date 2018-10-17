@@ -19,7 +19,7 @@ import br.senac.rn.loja.service.ProdutoService;
 
 @Controller
 @RequestMapping("produto")
-public class ProdutoController {
+public class ProdutoController extends GenericController<Produto>{
 
 	@Autowired
 	private ProdutoService service;
@@ -64,5 +64,11 @@ public class ProdutoController {
 	public String remover(@PathVariable("id") Integer id, Model model) {
 		service.remover(id);
 		return "redirect:/produto";
+	}
+
+	@Override
+	public Class<Produto> getClassType() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
