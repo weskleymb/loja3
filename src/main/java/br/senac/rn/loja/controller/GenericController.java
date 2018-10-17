@@ -65,10 +65,4 @@ public abstract class GenericController<T> {
 		return builder.append(SUFIXO_LISTA).toString();
 	}
 	
-//	private Class<T> getTipoGenerico() {
-//	@SuppressWarnings("unchecked")
-//	Class<T> clazz = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
-//	return clazz;
-//}
-	
 }
