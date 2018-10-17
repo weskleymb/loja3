@@ -27,16 +27,24 @@ public abstract class GenericController<T> {
 	@GetMapping
 	public String listar(Model model) {
 		model.addAttribute(getNomeEntidadeLista(), service.obterTodos());
-		return getPath() + PAGINA_LISTA;//getPath é pra dizer em que pasta é pra ir(marca, produto ...)
+
+		return getPath() + PAGINA_LISTA;
 	}
 	
 	@GetMapping(URL_CADASTRAR)
-	public String cadastrar(Model model) {	
+	public String cadastrar(Model model) {
 		try {
 			model.addAttribute(getNomeEntidade(), getClassType()
 					.getDeclaredConstructor()
 					.newInstance());
-		}catch(Exception exception) {}
+
+		} catch (Exception exception) {}
+		return getPath() + PAGINA_CADASTRAR;
+	}
+	
+	@GetMapping(URL_EDITAR)
+	public String editar(@PathVariable Integer id, Model model) {
+		model.addAttribute(service.obterPorId(id));
 		return getPath() + PAGINA_CADASTRAR;
 	}
 	
@@ -46,16 +54,9 @@ public abstract class GenericController<T> {
 		return "redirect:" + getPath();
 	}
 	
-	@GetMapping(URL_EDITAR)
-	public String editar(@PathVariable Integer id, Model model) {
-		model.addAttribute(service.obterPorId(id));
-		return getPath() + PAGINA_CADASTRAR;
-	}
-	
 	private String getNomeEntidade() {
 		return StringUtils.uncapitalize(getClassType().getSimpleName());
 	}
-	
 	protected String getPath() {
 		StringBuilder builder = new StringBuilder(getNomeEntidade());
 		return builder.append("/").toString();

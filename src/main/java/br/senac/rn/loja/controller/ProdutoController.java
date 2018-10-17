@@ -37,13 +37,12 @@ public class ProdutoController extends GenericController<Produto>{
 	
 	@GetMapping("cadastrar")
 	public String cadastrar(Model model) {
-		Produto produto = new Produto();
-		model.addAttribute("produto", produto);
-		List<Marca> marcas = marcaService.buscarTodos();
-		model.addAttribute("marcas", marcas);
-		List<Departamento> departamentos = departamentoService.buscarTodos();
-		model.addAttribute("departamentos", departamentos);
-		
+//		Produto produto = new Produto();
+//		model.addAttribute("produto", produto);
+//		List<Marca> marcas = marcaService.obterTodos();
+//		model.addAttribute("marcas", marcas);
+//		List<Departamento> departamentos = departamentoService.buscarTodos();
+//		model.addAttribute("departamentos", departamentos);
 		return "produto/form";
 	}
 	
