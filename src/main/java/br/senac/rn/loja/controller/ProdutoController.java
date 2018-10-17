@@ -51,7 +51,6 @@ public class ProdutoController {
 
 		return"redirect:/produto";
 
-		return "redirect:/produto";
 
 	}
 	

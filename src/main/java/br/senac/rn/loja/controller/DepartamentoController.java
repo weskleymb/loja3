@@ -6,19 +6,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import br.senac.rn.loja.model.Departamento;
 import br.senac.rn.loja.service.DepartamentoService;
 
 @Controller
 @RequestMapping("departamento")
-public class DepartamentoController {
+public class DepartamentoController extends GenericController<Departamento> {
 
-	@Autowired
-	private DepartamentoService service;
-	
-	@GetMapping
-	public String lista(Model model) {
-		model.addAttribute("departamentos", service.buscarTodos());
-		return "departamento/lista";
+	@Override
+	public Class<Departamento> getClassType() {
+		return Departamento.class;
 	}
 
 }
