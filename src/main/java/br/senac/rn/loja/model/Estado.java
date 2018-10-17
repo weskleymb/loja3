@@ -8,64 +8,40 @@ import javax.persistence.Table;
 
 @Table
 @Entity
-public class Departamento implements Comparable<Departamento> {
-
+public class Estado {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
 	private String sigla;
-	private Float desconto;
-	private String fone;
 	
 	public Integer getId() {
 		return id;
 	}
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
 	public String getNome() {
-		return nome.toUpperCase().trim();
+		return nome;
 	}
-	
 	public void setNome(String nome) {
-		this.nome = nome.toUpperCase().trim();
+		this.nome = nome;
 	}
-	
 	public String getSigla() {
-		return sigla.toUpperCase().trim();
+		return sigla;
 	}
-	
 	public void setSigla(String sigla) {
 		this.sigla = sigla.toUpperCase().trim();
 	}
-	
-	public Float getDesconto() {
-		return desconto;
-	}
-	
-	public void setDesconto(Float desconto) {
-		this.desconto = desconto;
-	}
-	
-	public String getFone() {
-		return fone.trim();
-	}
-
-	public void setFone(String fone) {
-		this.fone = fone.trim();
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + ((sigla == null) ? 0 : sigla.hashCode());
 		return result;
 	}
-	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -74,23 +50,27 @@ public class Departamento implements Comparable<Departamento> {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Departamento other = (Departamento) obj;
+		Estado other = (Estado) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		if (sigla == null) {
+			if (other.sigla != null)
+				return false;
+		} else if (!sigla.equals(other.sigla))
+			return false;
 		return true;
 	}
-	
-	@Override
-	public int compareTo(Departamento departamento) {
-		return id.compareTo(departamento.id);
-	}
-
 	@Override
 	public String toString() {
-		return "Departamento [id=" + id + ", nome=" + nome + ", sigla=" + sigla + ", desconto=" + desconto + "]";
+		return "Estado [id=" + id + ", nome=" + nome + ", sigla=" + sigla + "]";
 	}
 	
 }

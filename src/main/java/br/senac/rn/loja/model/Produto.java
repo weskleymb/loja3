@@ -35,11 +35,11 @@ public class Produto {
 	}
 	
 	public String getNome() {
-		return nome;
+		return nome.toUpperCase().trim();
 	}
 	
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.nome = nome.toUpperCase().trim();
 	}
 	
 	public Departamento getDepartamento() {
