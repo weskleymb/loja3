@@ -11,8 +11,8 @@ public abstract class GenericService<T> {
 	@Autowired
 	private GenericRepository<T> repository;
 	
-	public void salvar(T obj) {
-		repository.save(obj);
+	public void salvar(T entidade) {
+		repository.save(entidade);
 	}
 	
 	public List<T> obterTodos() {

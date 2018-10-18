@@ -1,6 +1,12 @@
 <!doctype html>
+<<<<<<< HEAD
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
 layout:decorator="fragments/layout">
+=======
+<html 
+    xmlns:th="http://www.thymeleaf.org" 
+    xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+>>>>>>> ae0e087066c82e6fd3eed9026c18276d6efd1d22
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,13 +16,20 @@ layout:decorator="fragments/layout">
         <link rel="stylesheet" th:href="@{/css/fontawesome.css}">
     </head>
     <body>
+<<<<<<< HEAD
         <div layout:fragment="content" >
+=======
+        <div class="container">
+>>>>>>> ae0e087066c82e6fd3eed9026c18276d6efd1d22
             <div class="row">
                 <div class="col-md-12">
                     <div th:insert="fragmentos/header :: header">header</div>
                 </div>
             </div>
+<<<<<<< HEAD
           
+=======
+>>>>>>> ae0e087066c82e6fd3eed9026c18276d6efd1d22
             <div class="row">
                 <div class="col-md-3">
                     <div th:insert="fragmentos/menu :: menu">menu</div>
@@ -25,10 +38,16 @@ layout:decorator="fragments/layout">
                     <div layout:fragment="content">layout</div>
                 </div>
             </div>
+<<<<<<< HEAD
 
             <div class="row">
                 <div class="col-md-12">
                     <div th:insert="fragmentos/footer :: footer">Header</div>
+=======
+            <div class="row">
+                <div class="col-md-12">
+                    <div th:insert="fragmentos/footer :: footer">footer</div>
+>>>>>>> ae0e087066c82e6fd3eed9026c18276d6efd1d22
                 </div>
             </div>
         </div>

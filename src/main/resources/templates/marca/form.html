@@ -1,12 +1,12 @@
 <!doctype html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Nova Marca</title>
-        <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
-        <link rel="stylesheet" th:href="@{/css/bootstrap-theme.css}">
-        <link rel="stylesheet" th:href="@{/css/fontawesome.css}">
+        <link rel="stylesheet" th:href="@{/css/bootstrap.css}" />
+        <link rel="stylesheet" th:href="@{/css/bootstrap-theme.css}" />
+        <link rel="stylesheet" th:href="@{/css/fontawesome.css}" />
     </head>
     <body>
         <div class="container" id="form-marcas">
@@ -18,7 +18,14 @@
                     <input type="hidden" id="id" name="id" th:value="*{id}" th:field="*{id}">
                     <div class="form-group">
                         <label for="nome">Nome</label>
-                        <input type="text" name="nome" id="nome" class="form-control" th:value="*{nome}" th:field="*{nome}" placeholder="Nome da marca..." autofocus>
+                        <input type="text" 
+                            name="nome" 
+                            id="nome" 
+                            class="form-control" 
+                            th:value="*{nome}" 
+                            th:field="*{nome}" 
+                            placeholder="Nome da marca..." 
+                            autofocus />
                     </div>
                     <div class="form-group">
                         <div class="col-md-6">
