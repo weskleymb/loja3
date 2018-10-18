@@ -8,7 +8,7 @@ import br.senac.rn.loja.model.Departamento;
 
 @Service
 @Transactional
-<<<<<<< HEAD
+
 public class DepartamentoService extends GenericService<Departamento> {
 
 //	@Autowired
@@ -31,6 +31,3 @@ public class DepartamentoService extends GenericService<Departamento> {
 //	}
 //	
 }
-=======
-public class DepartamentoService extends GenericService<Departamento> {}
->>>>>>> ae0e087066c82e6fd3eed9026c18276d6efd1d22

@@ -26,44 +26,24 @@ public abstract class GenericController<T> {
 
 	@GetMapping
 	public String listar(Model model) {
-<<<<<<< HEAD
-		model.addAttribute(getNomeEntidadeLista(), service.obterTodos());		
-=======
 		model.addAttribute(getNomeEntidadeLista(), service.obterTodos());
->>>>>>> ae0e087066c82e6fd3eed9026c18276d6efd1d22
 		return getPath() + PAGINA_LISTA;
 	}
 	
 	@GetMapping(URL_CADASTRAR)
 	public String cadastrar(Model model) {
 		try {
-<<<<<<< HEAD
-			model.addAttribute(getNomeEntidade(), getClassType().getDeclaredConstructor().newInstance());
-		} catch (Exception exception) {};
-=======
 			model.addAttribute(getNomeEntidade(), getClassType()
 					.getDeclaredConstructor()
 					.newInstance());
 		} catch (Exception exception) {}
->>>>>>> ae0e087066c82e6fd3eed9026c18276d6efd1d22
 		return getPath() + PAGINA_CADASTRAR;
 	}
 	
 	@GetMapping(URL_EDITAR)
 	public String editar(@PathVariable Integer id, Model model) {
-<<<<<<< HEAD
 		model.addAttribute(service.obterPorId(id));		
 		return getPath() + PAGINA_CADASTRAR;
-	}
-	
-	@PostMapping
-	public String salvar (T entidade) {
-		service.salvar(entidade);		
-		return "redirect:" + getPath();
-=======
-		model.addAttribute(service.obterPorId(id));
-		return getPath() + PAGINA_CADASTRAR;
->>>>>>> ae0e087066c82e6fd3eed9026c18276d6efd1d22
 	}
 	
 	@PostMapping
