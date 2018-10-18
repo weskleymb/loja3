@@ -24,7 +24,7 @@ public class Marca {
 	}
 	
 	public String getNome() {
-		return nome.toUpperCase().trim();
+		return nome;
 	}
 	
 	public void setNome(String nome) {

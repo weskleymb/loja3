@@ -27,7 +27,7 @@ public class Departamento implements Comparable<Departamento> {
 	}
 	
 	public String getNome() {
-		return nome.toUpperCase().trim();
+		return nome;
 	}
 	
 	public void setNome(String nome) {
@@ -35,7 +35,7 @@ public class Departamento implements Comparable<Departamento> {
 	}
 	
 	public String getSigla() {
-		return sigla.toUpperCase().trim();
+		return sigla;
 	}
 	
 	public void setSigla(String sigla) {
@@ -51,7 +51,7 @@ public class Departamento implements Comparable<Departamento> {
 	}
 	
 	public String getFone() {
-		return fone.trim();
+		return fone;
 	}
 
 	public void setFone(String fone) {
