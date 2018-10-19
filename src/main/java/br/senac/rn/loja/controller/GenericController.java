@@ -27,7 +27,6 @@ public abstract class GenericController<T> {
 	@GetMapping
 	public String listar(Model model) {
 		model.addAttribute(getNomeEntidadeLista(), service.obterTodos());
-
 		return getPath() + PAGINA_LISTA;
 	}
 	
