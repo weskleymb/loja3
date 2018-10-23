@@ -28,7 +28,6 @@ public class UsuarioDetailsService implements UserDetailsService {
 		if (user == null) {
 			throw new UsernameNotFoundException("Usuario não encontrado");
 		}
-
 		List<String> permissoes = new ArrayList<>();
 		for (Permissao permissao: user.getPermissoes()) {
 			permissoes.add(permissao.getNome());

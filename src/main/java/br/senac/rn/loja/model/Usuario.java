@@ -18,10 +18,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Table
 @Entity
 public class Usuario {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
 	private Integer id;
 	@NotEmpty
 	@Column(unique = true)
@@ -29,7 +27,7 @@ public class Usuario {
 	@NotEmpty
 	private String password;
 	@NotEmpty
-	private String name;
+	private String nome;
 
 	@ManyToMany(fetch=FetchType.EAGER)
 	private List<Permissao> permissoes = new ArrayList<Permissao>();
@@ -37,7 +35,6 @@ public class Usuario {
 	public Integer getId() {
 		return id;
 	}
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -54,10 +51,10 @@ public class Usuario {
 		password = new BCryptPasswordEncoder().encode(password);
 	}
 	public String getNome() {
-		return name;
+		return nome;
 	}
-	public void setNome(String name) {
-		this.name = name;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}	
 	
 	
@@ -92,7 +89,7 @@ public class Usuario {
 	}
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", username=" + username + ", Password=" + password + ", nome=" + name + "]";
+		return "Usuario [id=" + id + ", username=" + username + ", Password=" + password + ", nome=" + nome + "]";
 	}
 
 }
