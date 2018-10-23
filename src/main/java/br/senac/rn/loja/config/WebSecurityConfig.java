@@ -9,8 +9,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import br.senac.rn.loja.model.Usuario;
-
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
@@ -23,17 +21,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		http
 		.authorizeRequests()
 		.antMatchers("/login", "/fragmentos/**", "/css/**", "/js/**", "/fonts/**").permitAll()
+		.antMatchers("/produto/**").hasRole("GERENTE")
+		.antMatchers("/departamento/**").hasRole("ADMIN")
 		.anyRequest().authenticated()
 		.and()
 		.formLogin()
-			.loginPage("/login").successForwardUrl("/marca")
-			.defaultSuccessUrl("/marca", true).permitAll();
+			.loginPage("/login").successForwardUrl("/index")
+			.defaultSuccessUrl("/index", true).permitAll();
 		super.configure(http);
 	}
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth
-		.userDetailsService(user);	
+		.userDetailsService(user)
+		.passwordEncoder(new BCryptPasswordEncoder());	
 	}
 }
