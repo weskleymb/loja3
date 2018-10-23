@@ -9,33 +9,32 @@ import javax.persistence.Table;
 @Table
 @Entity
 public class Permissao {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
-	private String regra;
+	
 	public Integer getId() {
 		return id;
 	}
+	
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	
 	public String getNome() {
 		return nome;
 	}
+	
 	public void setNome(String nome) {
-		if (!nome.contains("ROLE_")) {
-		    this.nome = "ROLE_" + nome.trim().toUpperCase();
-		}else {
-			this.nome = nome.trim().toUpperCase();
+		String role = nome.trim().replace(" ", "_").toUpperCase();
+		if (!role.contains("ROLE_")) {
+			this.nome = "ROLE_" + role;			
+		} else {
+			this.nome = role;
 		}
 	}
-	public String getRegra() {
-		return regra;
-	}
-	public void setRegra(String regra) {
-		this.regra = regra;
-	}	
+	
 
 }

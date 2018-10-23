@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,22 +18,26 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Table
 @Entity
 public class Usuario {
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	private Integer id;
 	@NotEmpty
 	@Column(unique = true)
 	private String username;
 	@NotEmpty
-	private String Password;
+	private String password;
 	@NotEmpty
-	private String nome;
-	@ManyToMany 
+	private String name;
+
+	@ManyToMany(fetch=FetchType.EAGER)
 	private List<Permissao> permissoes = new ArrayList<Permissao>();
 	
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -43,16 +48,16 @@ public class Usuario {
 		this.username = username;
 	}
 	public String getPassword() {
-		return Password;
+		return password;
 	}
 	public void setPassword(String password) {
-		Password = new BCryptPasswordEncoder().encode(password);
+		password = new BCryptPasswordEncoder().encode(password);
 	}
 	public String getNome() {
-		return nome;
+		return name;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setNome(String name) {
+		this.name = name;
 	}	
 	
 	
@@ -87,7 +92,7 @@ public class Usuario {
 	}
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", username=" + username + ", Password=" + Password + ", nome=" + nome + "]";
+		return "Usuario [id=" + id + ", username=" + username + ", Password=" + password + ", nome=" + name + "]";
 	}
 
 }

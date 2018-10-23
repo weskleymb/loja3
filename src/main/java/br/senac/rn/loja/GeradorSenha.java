@@ -8,4 +8,5 @@ public class GeradorSenha {
 		System.out.println("Senha: " + new BCryptPasswordEncoder().encode("senac"));
 	}
 
+
 }

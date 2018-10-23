@@ -22,6 +22,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 		.authorizeRequests()
 		.antMatchers("/login", "/css/**", "/js/**", "/fonts/**").permitAll()
+
+		.antMatchers("/produto/**").hasRole("GERENTE")
+		.antMatchers("/departamento/**").hasRole("ADMIN")
+
 		.anyRequest().authenticated()
 		.and()
 		.formLogin()
@@ -35,4 +39,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.userDetailsService(user).passwordEncoder(new BCryptPasswordEncoder());
 	}
 	
+
 }
+
