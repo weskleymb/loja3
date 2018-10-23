@@ -1,10 +1,15 @@
 package br.senac.rn.loja.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -24,8 +29,8 @@ public class Usuario {
 	private String password;
 	@NotEmpty
 	private String name;
-	@NotEmpty
-	private Boolean admin;
+	@ManyToMany(fetch=FetchType.EAGER)
+	private List<Permissao> permissoes = new ArrayList<Permissao>();
 	
 	public Integer getId() {
 		return id;
@@ -59,12 +64,12 @@ public class Usuario {
 		this.name = name;
 	}
 
-	public Boolean isAdmin() {
-		return admin;
+	public List<Permissao> getPermissoes() {
+		return permissoes;
 	}
 
-	public void setAdmin(boolean admin) {
-		this.admin = admin;
+	public void setPermissoes(List<Permissao> permissoes) {
+		this.permissoes = permissoes;
 	}
 	
 }

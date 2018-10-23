@@ -8,8 +8,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import br.senac.rn.loja.model.Usuario;
-import br.senac.rn.loja.repository.UsuarioRepository;
 import br.senac.rn.loja.service.UsuarioDetailsService;
 
 @Configuration
@@ -24,6 +22,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 		.authorizeRequests()
 		.antMatchers("/login", "/css/**", "/js/**", "/fonts/**").permitAll()
+		.antMatchers("/produto/**").hasRole("GERENTE")
+		.antMatchers("/departamento/**").hasRole("ADMIN")
 		.anyRequest().authenticated()
 		.and()
 		.formLogin()
