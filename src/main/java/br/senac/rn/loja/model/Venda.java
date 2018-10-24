@@ -20,7 +20,7 @@ import javax.persistence.TemporalType;
 public class Venda {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+//	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	@ManyToOne
 	@JoinColumn(name="id_cliente")

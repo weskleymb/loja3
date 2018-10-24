@@ -16,7 +16,7 @@ import javax.persistence.TemporalType;
 public class Cliente {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+//	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
 	@Column(unique=true)
