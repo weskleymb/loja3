@@ -31,7 +31,7 @@ public class Departamento implements Comparable<Departamento> {
 	}
 	
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.nome = nome.toUpperCase().trim();
 	}
 	
 	public String getSigla() {
@@ -39,7 +39,7 @@ public class Departamento implements Comparable<Departamento> {
 	}
 	
 	public void setSigla(String sigla) {
-		this.sigla = sigla;
+		this.sigla = sigla.toUpperCase().trim();
 	}
 	
 	public Float getDesconto() {
@@ -55,7 +55,7 @@ public class Departamento implements Comparable<Departamento> {
 	}
 
 	public void setFone(String fone) {
-		this.fone = fone;
+		this.fone = fone.trim();
 	}
 
 	@Override
