@@ -42,7 +42,7 @@ public abstract class GenericController<T> {
 	
 	@GetMapping(URL_EDITAR)
 	public String editar(@PathVariable Integer id, Model model) {
-		model.addAttribute(service.obterPorId(id));
+		model.addAttribute(service.obterPorId(id));		
 		return getPath() + PAGINA_CADASTRAR;
 	}
 	

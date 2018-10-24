@@ -1,7 +1,5 @@
 <!doctype html>
-<html 
-    xmlns:th="http://www.thymeleaf.org" 
-    xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/lauout">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,12 +9,13 @@
         <link rel="stylesheet" th:href="@{/css/fontawesome.css}">
     </head>
     <body>
-        <div class="container">
+        <div class="container" >
             <div class="row">
                 <div class="col-md-12">
                     <div th:insert="fragmentos/header :: header">header</div>
                 </div>
             </div>
+          
             <div class="row">
                 <div class="col-md-3">
                     <div th:insert="fragmentos/menu :: menu">menu</div>
@@ -25,9 +24,10 @@
                     <div layout:fragment="content">layout</div>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-md-12">
-                    <div th:insert="fragmentos/footer :: footer">footer</div>
+                    <div th:insert="fragmentos/footer :: footer">Header</div>
                 </div>
             </div>
         </div>

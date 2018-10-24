@@ -1,14 +1,32 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap-theme.css}">
+    <link rel="stylesheet" th:href="@{/css/fontawesome.css}">
 </head>
+
 <body>
-    <div class="container" style="margin-top: 40px;">
+    <div class="container">
+
+        <legend>Lista de departamento</legend>
+        <div class="form-group">
+            <div class="col-md-6">
+                <a class="btn btn-primary btn-block" th:href="@{/departamento/cadastrar}">
+                    <i class="fas fa-plus-circle"></i> Novo
+                </a>
+            </div>
+            <div class="col-md-6">
+                <a class="btn btn-danger btn-block" onclick="history.go(-1)">
+                    <i class="fas fa-undo-alt"></i> Voltar
+                </a>
+            </div>
+        </div>
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
@@ -24,9 +42,26 @@
                     <td th:text="${departamento.nome}"></td>
                     <td th:text="${departamento.sigla}"></td>
                     <td th:text="${departamento.desconto}"></td>
+                    <td style="width: 15%;">
+                        <div class="col-md-6">
+                            <a class="btn btn-primary btn-block" th:href="@{/departamento/editar/{id}(id=${departamento.id})}">
+                                <i class="far fa-edit"></i>
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <a class="btn btn-danger btn-block" th:href="@{/departamento/remover/{id}(id=${departamento.id})}">
+                                <i class="far fa-trash-alt"></i>
+                            </a>
+                        </div>
+                    </td>
+
                 </tr>
             </tbody>
         </table>
     </div>
+    <script th:src="@{/js/jquery.js}"></script>
+    <script th:src="@{/js/bootstrap.js}"></script>
+    <script th:src="@{/js/fontawesome.js}"></script>
 </body>
+
 </html>
