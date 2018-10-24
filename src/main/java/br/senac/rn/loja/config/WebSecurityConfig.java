@@ -4,6 +4,7 @@ package br.senac.rn.loja.config;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -22,14 +23,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 		.authorizeRequests()
 		.antMatchers("/login", "/css/**", "/js/**", "/fonts/**").permitAll()
-		.antMatchers("/produto/**").hasRole("GERENTE")
-		.antMatchers("/departamento/**").hasRole("ADMIN")
 		.anyRequest().authenticated()
 		.and()
 		.formLogin()
 			.loginPage("/login").successForwardUrl("/marca")
 			.defaultSuccessUrl("/marca", true).permitAll();
-		super.configure(http);
 	}
 	
 	@Override
@@ -37,6 +35,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.userDetailsService(user).passwordEncoder(new BCryptPasswordEncoder());
 	}
 	
+<<<<<<< HEAD
 
+=======
+	@Override
+	public void configure(WebSecurity web) throws Exception {
+		web.ignoring().antMatchers("/api/**");
+	}
+	
+>>>>>>> desenvolvimento
 }
 
