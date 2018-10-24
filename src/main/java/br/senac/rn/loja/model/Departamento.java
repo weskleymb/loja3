@@ -11,7 +11,7 @@ import javax.persistence.Table;
 public class Departamento implements Comparable<Departamento> {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+//	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
 	private String sigla;
