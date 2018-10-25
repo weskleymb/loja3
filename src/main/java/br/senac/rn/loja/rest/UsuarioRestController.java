@@ -1,4 +1,4 @@
-package br.senac.rn.loja.controller.rest;
+package br.senac.rn.loja.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

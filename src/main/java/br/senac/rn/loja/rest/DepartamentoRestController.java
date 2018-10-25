@@ -1,4 +1,4 @@
-package br.senac.rn.loja.controller.rest;
+package br.senac.rn.loja.rest;
 
 import java.util.List;
 import java.util.Optional;
