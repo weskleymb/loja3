@@ -36,7 +36,7 @@ public class Departamento implements Serializable {
 	}
 	
 	public void setNome(String nome) {
-		this.nome = nome.toUpperCase().trim();
+		this.nome = nome.trim().toUpperCase();
 	}
 	
 	public String getSigla() {
@@ -44,7 +44,7 @@ public class Departamento implements Serializable {
 	}
 	
 	public void setSigla(String sigla) {
-		this.sigla = sigla.toUpperCase().trim();
+		this.sigla = sigla.trim().toUpperCase();
 	}
 	
 	public Float getDesconto() {

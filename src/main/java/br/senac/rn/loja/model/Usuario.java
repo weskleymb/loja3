@@ -44,7 +44,7 @@ public class Usuario implements Serializable {
 	}
 	
 	public void setLogin(String login) {
-		this.login = login;
+		this.login = login.trim().toLowerCase();
 	}
 	
 	public String getSenha() {
@@ -52,7 +52,7 @@ public class Usuario implements Serializable {
 	}
 	
 	public void setSenha(String senha) {
-		this.senha = new BCryptPasswordEncoder().encode(senha);;
+		this.senha = new BCryptPasswordEncoder().encode(senha.trim());;
 	}
 	
 	public String getNome() {

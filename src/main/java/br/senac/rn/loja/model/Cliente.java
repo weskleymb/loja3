@@ -38,11 +38,11 @@ public class Cliente implements Serializable {
 	}
 	
 	public String getNome() {
-		return nome.toUpperCase().trim();
+		return nome.trim().toUpperCase();
 	}
 	
 	public void setNome(String nome) {
-		this.nome = nome.toUpperCase().trim();
+		this.nome = nome.trim().toUpperCase();
 	}
 	
 	public String getCpf() {
