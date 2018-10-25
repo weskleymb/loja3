@@ -16,7 +16,7 @@ import br.senac.rn.loja.service.UsuarioService;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-	private UsuarioService usuario;
+	private UsuarioService usuarioDetailsService;
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -33,7 +33,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(usuario).passwordEncoder(new BCryptPasswordEncoder());
+		auth.userDetailsService(usuarioDetailsService).passwordEncoder(new BCryptPasswordEncoder());
 	}
 	
 	@Override
