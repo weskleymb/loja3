@@ -1,6 +1,5 @@
 package br.senac.rn.loja.model;
 
-import java.io.Serializable;
 import java.util.Calendar;
 
 import javax.persistence.Column;
@@ -15,10 +14,8 @@ import javax.persistence.TemporalType;
 
 @Table
 @Entity
-public class Cliente implements Serializable {
+public class Cliente extends AuditedEntity {
 
-	private static final long serialVersionUID = 1L;
-	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_CLIENTE")
 	@SequenceGenerator(name="SEQ_CLIENTE", sequenceName="seq_cliente_id", allocationSize=1)
@@ -38,11 +35,11 @@ public class Cliente implements Serializable {
 	}
 	
 	public String getNome() {
-		return nome.toUpperCase().trim();
+		return nome.trim().toUpperCase();
 	}
 	
 	public void setNome(String nome) {
-		this.nome = nome.toUpperCase().trim();
+		this.nome = nome.trim().toUpperCase();
 	}
 	
 	public String getCpf() {
@@ -86,9 +83,4 @@ public class Cliente implements Serializable {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "Cliente [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", nascimento=" + nascimento + "]";
-	}
-	
 }

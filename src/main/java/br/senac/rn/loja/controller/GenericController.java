@@ -9,9 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import br.senac.rn.loja.model.AuditedEntity;
 import br.senac.rn.loja.service.GenericService;
 
-public abstract class GenericController<T> {
+public abstract class GenericController<T extends AuditedEntity> {
 
 	protected final String PAGINA_LISTA = "lista";
 	protected final String PAGINA_CADASTRAR = "form";

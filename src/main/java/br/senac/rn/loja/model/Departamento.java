@@ -1,7 +1,5 @@
 package br.senac.rn.loja.model;
 
-import java.io.Serializable;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,10 +9,8 @@ import javax.persistence.Table;
 
 @Table
 @Entity
-public class Departamento implements Serializable {
+public class Departamento extends AuditedEntity {
 	
-	private static final long serialVersionUID = 1L;
-
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_DEPARTAMENTO")
 	@SequenceGenerator(name="SEQ_DEPARTAMENTO", sequenceName="seq_departamento_id", allocationSize=1)
@@ -36,7 +32,7 @@ public class Departamento implements Serializable {
 	}
 	
 	public void setNome(String nome) {
-		this.nome = nome.toUpperCase().trim();
+		this.nome = nome.trim().toUpperCase();
 	}
 	
 	public String getSigla() {
@@ -44,7 +40,7 @@ public class Departamento implements Serializable {
 	}
 	
 	public void setSigla(String sigla) {
-		this.sigla = sigla.toUpperCase().trim();
+		this.sigla = sigla.trim().toUpperCase();
 	}
 	
 	public Float getDesconto() {

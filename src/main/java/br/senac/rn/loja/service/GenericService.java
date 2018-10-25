@@ -5,9 +5,10 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import br.senac.rn.loja.model.AuditedEntity;
 import br.senac.rn.loja.repository.GenericRepository;
 
-public abstract class GenericService<T> {
+public abstract class GenericService<T extends AuditedEntity> {
 
 	@Autowired
 	protected GenericRepository<T> repository;

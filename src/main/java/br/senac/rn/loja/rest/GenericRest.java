@@ -12,9 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import br.senac.rn.loja.model.AuditedEntity;
 import br.senac.rn.loja.service.GenericService;
 
-public abstract class GenericRest<T> {
+public abstract class GenericRest<T extends AuditedEntity> {
 
 	@Autowired
 	private GenericService<T> service;
