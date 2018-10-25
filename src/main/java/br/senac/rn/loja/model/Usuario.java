@@ -1,7 +1,5 @@
 package br.senac.rn.loja.model;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,10 +13,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Table
 @Entity
-public class Usuario implements Serializable {
+public class Usuario extends AuditedEntity {
 	
-	private static final long serialVersionUID = 1L;
-
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_USUARIO")
 	@SequenceGenerator(name="SEQ_USUARIO", sequenceName="seq_usuario_id", allocationSize=1)
