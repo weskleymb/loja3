@@ -67,12 +67,11 @@ public class Venda implements Serializable {
 	}
 
 	public Float getValor() {
-		Float total = 0.0f;
+		valor = 0.0f;
 		for (Produto produto : produtos) {
-			total += produto.getValor();
+			valor += produto.getValor();
 		}
-		valor = total;
-		return total;
+		return valor;
 	}
 	
 	public void setValor(Float valor) {
