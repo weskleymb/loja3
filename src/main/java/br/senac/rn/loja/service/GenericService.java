@@ -1,6 +1,7 @@
 package br.senac.rn.loja.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -11,20 +12,24 @@ public abstract class GenericService<T> {
 	@Autowired
 	protected GenericRepository<T> repository;
 	
-	public void salvar(T entidade) {
-		repository.save(entidade);
-	}
-	
 	public List<T> obterTodos() {
 		return repository.findAll();
 	}
 	
-	public T obterPorId(Integer id) {
-		return repository.findById(id).get();
+	public Optional<T> obterPorId(Integer id) {
+		return repository.findById(id);
+	}
+	
+	public void salvar(T entidade) {
+		repository.save(entidade);
 	}
 	
 	public void remover(T entidade) {
 		repository.delete(entidade);
+	}
+	
+	public void remover(Integer id) {
+		repository.deleteById(id);
 	}
 	
 }

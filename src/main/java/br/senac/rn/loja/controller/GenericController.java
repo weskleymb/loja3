@@ -1,5 +1,7 @@
 package br.senac.rn.loja.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -42,7 +44,8 @@ public abstract class GenericController<T> {
 	
 	@GetMapping(URL_EDITAR)
 	public String editar(@PathVariable Integer id, Model model) {
-		model.addAttribute(service.obterPorId(id));
+		Optional<T> entidade = service.obterPorId(id);
+		model.addAttribute(getNomeEntidade(), entidade);
 		return getPath() + PAGINA_CADASTRAR;
 	}
 	
