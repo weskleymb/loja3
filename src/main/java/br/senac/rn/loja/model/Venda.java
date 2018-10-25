@@ -1,5 +1,6 @@
 package br.senac.rn.loja.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -11,25 +12,29 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Table
 @Entity
-public class Venda {
+public class Venda implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 
 	@Id
-//	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_VENDA")
+	@SequenceGenerator(name="SEQ_VENDA", sequenceName="seq_venda_id", allocationSize=1)
 	private Integer id;
 	@ManyToOne
-	@JoinColumn(name="id_cliente")
+	@JoinColumn(name="cliente_id")
 	private Cliente cliente;
 	@Temporal(TemporalType.DATE)
 	private Calendar data;
 	private Float valor;
 	@ManyToMany
-	@JoinTable(name="itens_venda", joinColumns=@JoinColumn(name="id_venda"), inverseJoinColumns=@JoinColumn(name="id_produto"))
+	@JoinTable(name="itens_venda", joinColumns=@JoinColumn(name="venda_id"), inverseJoinColumns=@JoinColumn(name="produto_id"))
 	private List<Produto> produtos;
 	
 	public Venda() {
@@ -66,7 +71,12 @@ public class Venda {
 		for (Produto produto : produtos) {
 			total += produto.getValor();
 		}
+		valor = total;
 		return total;
+	}
+	
+	public void setValor(Float valor) {
+		this.valor = valor;
 	}
 	
 	public void addProduto(Produto produto) {
@@ -110,10 +120,4 @@ public class Venda {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "Venda [id=" + id + ", cliente=" + cliente + ", data=" + data + ", valor=" + valor + ", produtos="
-				+ produtos + "]";
-	}
-	
 }

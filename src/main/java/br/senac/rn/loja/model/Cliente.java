@@ -1,5 +1,6 @@
 package br.senac.rn.loja.model;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 import javax.persistence.Column;
@@ -7,16 +8,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Table
 @Entity
-public class Cliente {
+public class Cliente implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	@Id
-//	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_CLIENTE")
+	@SequenceGenerator(name="SEQ_CLIENTE", sequenceName="seq_cliente_id", allocationSize=1)
 	private Integer id;
 	private String nome;
 	@Column(unique=true)

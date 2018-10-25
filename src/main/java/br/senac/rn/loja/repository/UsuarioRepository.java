@@ -4,6 +4,6 @@ import br.senac.rn.loja.model.Usuario;
 
 public interface UsuarioRepository extends GenericRepository<Usuario> {
 
-	Usuario findByUsername(String username);
+	Usuario findByLogin(String login);
 	
 }

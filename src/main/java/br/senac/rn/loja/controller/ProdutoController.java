@@ -10,7 +10,7 @@ import br.senac.rn.loja.service.DepartamentoService;
 import br.senac.rn.loja.service.MarcaService;
 
 @Controller
-@RequestMapping("produto")
+@RequestMapping("/produto")
 public class ProdutoController extends GenericController<Produto> {
 
 	@Autowired

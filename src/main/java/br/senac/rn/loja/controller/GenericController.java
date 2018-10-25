@@ -14,8 +14,8 @@ public abstract class GenericController<T> {
 	protected final String PAGINA_LISTA = "lista";
 	protected final String PAGINA_CADASTRAR = "form";
 	
-	protected final String URL_CADASTRAR = "cadastrar";
-	protected final String URL_EDITAR = "editar/{id}";
+	protected final String URL_CADASTRAR = "/cadastrar";
+	protected final String URL_EDITAR = "/editar/{id}";
 	
 	protected final String SUFIXO_LISTA = "Lista";
 	

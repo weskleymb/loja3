@@ -1,22 +1,27 @@
 package br.senac.rn.loja.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Table
 @Entity
-public class Departamento implements Comparable<Departamento> {
+public class Departamento implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 
 	@Id
-//	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_DEPARTAMENTO")
+	@SequenceGenerator(name="SEQ_DEPARTAMENTO", sequenceName="seq_departamento_id", allocationSize=1)
 	private Integer id;
 	private String nome;
 	private String sigla;
 	private Float desconto;
-	private String fone;
 	
 	public Integer getId() {
 		return id;
@@ -50,14 +55,6 @@ public class Departamento implements Comparable<Departamento> {
 		this.desconto = desconto;
 	}
 	
-	public String getFone() {
-		return fone;
-	}
-
-	public void setFone(String fone) {
-		this.fone = fone.trim();
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -81,16 +78,6 @@ public class Departamento implements Comparable<Departamento> {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}
-	
-	@Override
-	public int compareTo(Departamento departamento) {
-		return id.compareTo(departamento.id);
-	}
-
-	@Override
-	public String toString() {
-		return "Departamento [id=" + id + ", nome=" + nome + ", sigla=" + sigla + ", desconto=" + desconto + "]";
 	}
 	
 }

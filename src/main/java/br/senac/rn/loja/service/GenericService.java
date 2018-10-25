@@ -9,7 +9,7 @@ import br.senac.rn.loja.repository.GenericRepository;
 public abstract class GenericService<T> {
 
 	@Autowired
-	private GenericRepository<T> repository;
+	protected GenericRepository<T> repository;
 	
 	public void salvar(T entidade) {
 		repository.save(entidade);
@@ -21,6 +21,10 @@ public abstract class GenericService<T> {
 	
 	public T obterPorId(Integer id) {
 		return repository.findById(id).get();
+	}
+	
+	public void remover(T entidade) {
+		repository.delete(entidade);
 	}
 	
 }
