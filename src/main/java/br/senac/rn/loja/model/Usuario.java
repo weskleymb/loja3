@@ -29,8 +29,8 @@ public class Usuario {
 	private String password;
 	@NotEmpty
 	private String name;
-	@ManyToMany(fetch=FetchType.EAGER)
-	private List<Permissao> permissoes = new ArrayList<Permissao>();
+//	@ManyToMany(fetch=FetchType.EAGER)
+//	private List<Permissao> permissoes = new ArrayList<Permissao>();
 	
 	public Integer getId() {
 		return id;
@@ -64,12 +64,12 @@ public class Usuario {
 		this.name = name;
 	}
 
-	public List<Permissao> getPermissoes() {
-		return permissoes;
-	}
-
-	public void setPermissoes(List<Permissao> permissoes) {
-		this.permissoes = permissoes;
-	}
+//	public List<Permissao> getPermissoes() {
+//		return permissoes;
+//	}
+//
+//	public void setPermissoes(List<Permissao> permissoes) {
+//		this.permissoes = permissoes;
+//	}
 	
 }

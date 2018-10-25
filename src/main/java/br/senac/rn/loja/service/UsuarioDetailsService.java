@@ -28,11 +28,11 @@ public class UsuarioDetailsService implements UserDetailsService {
 		if (user == null) {
 			throw new UsernameNotFoundException("Usuario não encontrado");
 		}
-		List<String> permissoes = new ArrayList<>();
-		for (Permissao permissao: user.getPermissoes()) {
-			permissoes.add(permissao.getNome());
-		}
-		List<GrantedAuthority> autorizacoes = AuthorityUtils.createAuthorityList(permissoes.toArray(new String[0]));
+//		List<String> permissoes = new ArrayList<>();
+//		for (Permissao permissao: user.getPermissoes()) {
+//			permissoes.add(permissao.getNome());
+//		}
+		List<GrantedAuthority> autorizacoes = AuthorityUtils.createAuthorityList("ROLE_USER", "ROLE_ADMIN");
 		return new User(user.getUsername(), user.getPassword(), autorizacoes);
 	}
 
