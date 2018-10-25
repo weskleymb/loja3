@@ -1,15 +1,13 @@
 package br.senac.rn.loja.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -17,20 +15,21 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Table
 @Entity
-public class Usuario {
+public class Usuario implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 
 	@Id
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_USUARIO")
+	@SequenceGenerator(name="SEQ_USUARIO", sequenceName="seq_usuario_id", allocationSize=1)
 	private Integer id;
 	@NotEmpty
 	@Column(unique = true)
-	private String username;
+	private String login;
 	@NotEmpty
-	private String password;
+	private String senha;
 	@NotEmpty
-	private String name;
-	@ManyToMany(fetch=FetchType.EAGER)
-	private List<Permissao> permissoes = new ArrayList<Permissao>();
+	private String nome;
 	
 	public Integer getId() {
 		return id;
@@ -40,36 +39,28 @@ public class Usuario {
 		this.id = id;
 	}
 	
-	public String getUsername() {
-		return username;
+	public String getLogin() {
+		return login;
 	}
 	
-	public void setUsername(String username) {
-		this.username = username;
+	public void setLogin(String login) {
+		this.login = login;
 	}
 	
-	public String getPassword() {
-		return password;
+	public String getSenha() {
+		return senha;
 	}
 	
-	public void setPassword(String password) {
-		this.password = new BCryptPasswordEncoder().encode(password);
+	public void setSenha(String senha) {
+		this.senha = new BCryptPasswordEncoder().encode(senha);;
 	}
 	
-	public String getName() {
-		return name;
+	public String getNome() {
+		return nome;
 	}
 	
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public List<Permissao> getPermissoes() {
-		return permissoes;
-	}
-
-	public void setPermissoes(List<Permissao> permissoes) {
-		this.permissoes = permissoes;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	
 }

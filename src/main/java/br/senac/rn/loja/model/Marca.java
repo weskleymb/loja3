@@ -1,5 +1,7 @@
 package br.senac.rn.loja.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,7 +11,9 @@ import javax.persistence.Table;
 
 @Table
 @Entity
-public class Marca {
+public class Marca implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_MARCA")
@@ -30,7 +34,7 @@ public class Marca {
 	}
 	
 	public void setNome(String nome) {
-		this.nome = nome.toUpperCase().trim();
+		this.nome = nome.trim().toUpperCase();
 	}
 	
 	@Override
@@ -56,11 +60,6 @@ public class Marca {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}
-	
-	@Override
-	public String toString() {
-		return "Marca [id=" + id + ", nome=" + nome + "]";
 	}
 	
 }

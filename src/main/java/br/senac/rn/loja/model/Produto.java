@@ -1,23 +1,32 @@
 package br.senac.rn.loja.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Table
 @Entity
-public class Produto {
+public class Produto implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 
 	@Id
-//	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_PRODUTO")
+	@SequenceGenerator(name="SEQ_PRODUTO", sequenceName="seq_produto_id", allocationSize=1)
 	private Integer id;
 	private String nome;
 	@ManyToOne
+	@JoinColumn(name="departamento_id")
 	private Departamento departamento;
 	@ManyToOne
+	@JoinColumn(name="marca_id")
 	private Marca marca;
 	private Float valor;
 	
@@ -39,7 +48,7 @@ public class Produto {
 	}
 	
 	public void setNome(String nome) {
-		this.nome = nome.toUpperCase().trim();
+		this.nome = nome.trim().toUpperCase();
 	}
 	
 	public Departamento getDepartamento() {
@@ -89,10 +98,6 @@ public class Produto {
 		} else if (!departamento.equals(other.departamento))
 			return false;
 		return true;
-	}
-	@Override
-	public String toString() {
-		return "Produto [id=" + id + ", nome=" + nome + ", departamento=" + departamento + ", marca=" + marca + "]";
 	}
 	
 }

@@ -1,7 +1,9 @@
 package br.senac.rn.loja.controller.rest;
 
 import java.util.List;
+import java.util.Optional;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,32 +33,30 @@ public class DepartamentoRestController {
 	}
 	
 	@GetMapping("/{id}")
-	public Departamento obter(@PathVariable Integer id) {
-		return repository.findById(id).get();
+	public ResponseEntity<?> obter(@PathVariable Integer id) {
+		return Optional
+				.ofNullable(repository.findById(id))
+				.map(departamento -> new ResponseEntity<>(departamento, HttpStatus.OK))
+				.orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
 	}
 	
 	@PostMapping("/salvar")
-	@ResponseStatus(HttpStatus.CREATED)
-	public void salvar(@RequestBody Departamento departamento) {
-		repository.save(departamento);
+	public ResponseEntity<Departamento> salvar(@RequestBody Departamento departamento) {
+		return ResponseEntity.ok(repository.save(departamento));
 	}
 	
 	@PutMapping("/edita/{id}")
-	public ResponseEntity<Departamento> editar(@PathVariable Integer id,
-			@RequestBody Departamento departamento) {
-		Departamento dep = repository.findById(id).get();
-		dep.setNome(departamento.getNome());
-		dep.setSigla(departamento.getSigla());
-		dep.setFone(departamento.getFone());
-		dep.setDesconto(departamento.getDesconto());
-		repository.save(dep);
-		return ResponseEntity.status(HttpStatus.OK).body(dep);
+	public ResponseEntity<Departamento> editar(@PathVariable Integer id, @RequestBody Departamento departamento) {
+		Departamento departamentoEdita = repository.findById(id).get();
+		BeanUtils.copyProperties(departamento, departamentoEdita, "id");
+		repository.save(departamentoEdita);
+		return ResponseEntity.ok(departamentoEdita);
 	}
 	
 	@DeleteMapping("/remove/{id}")
-	public ResponseEntity<Departamento> remover(@PathVariable Integer id) {
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void remover(@PathVariable Integer id) {
 		repository.deleteById(id);
-		return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
 	}
 	
 }

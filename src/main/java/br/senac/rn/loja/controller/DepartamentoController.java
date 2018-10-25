@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import br.senac.rn.loja.model.Departamento;
 
 @Controller
-@RequestMapping("departamento")
+@RequestMapping("/departamento")
 public class DepartamentoController extends GenericController<Departamento> {
 
 	@Override
