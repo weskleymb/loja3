@@ -35,14 +35,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.userDetailsService(user).passwordEncoder(new BCryptPasswordEncoder());
 	}
 	
-<<<<<<< HEAD
 
-=======
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring().antMatchers("/api/**");
 	}
 	
->>>>>>> desenvolvimento
 }
 
